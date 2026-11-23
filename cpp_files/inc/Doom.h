@@ -32,7 +32,7 @@ struct Matrix2d
         }
 
         double det_mat = this->det();
-        return det_mat*Matrix2d(c,-b,-d,a); 
+        return (1.0/det_mat)*Matrix2d(d,-c,-b,a); 
         
     }
 }; 
