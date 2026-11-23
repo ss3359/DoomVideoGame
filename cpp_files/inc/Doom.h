@@ -82,4 +82,11 @@ Vector2d ray_segment_intersection(Vector2d player, Vector2d direction, Wall wall
     return invM*b; 
 
 }
-bool is_point_of_intersection_valid()
+bool is_point_of_intersection_valid(Vector2d player, Vector2d direction, Wall wall)
+{
+    Vector2d result = ray_segment_intersection(player,direction,wall); 
+    if(result.y >= 0 && (result.x<=0 && result.x<=1))
+        return true;
+    else 
+        return false;  
+}
