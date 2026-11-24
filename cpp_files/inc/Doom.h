@@ -1,5 +1,6 @@
 #include <iostream> 
 #include <stdexcept>
+#include <optional>
 
 struct Vector2d
 {
@@ -82,11 +83,8 @@ Vector2d ray_segment_intersection(Vector2d player, Vector2d direction, Wall wall
     return invM*b; 
 
 }
-bool is_point_of_intersection_valid(Vector2d player, Vector2d direction, Wall wall)
+std::optional<Vector2d> is_point_of_intersection_valid(Vector2d player, Vector2d direction, Wall wall)
 {
     Vector2d result = ray_segment_intersection(player,direction,wall); 
-    if(result.y >= 0 && (result.x<=0 && result.x<=1))
-        return true;
-    else 
-        return false;  
+    return (result.x >=0.0 && result.x<1.0 && result.y>=0.0)? false: result; 
 }
